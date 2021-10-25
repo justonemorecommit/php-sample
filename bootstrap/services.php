@@ -7,11 +7,12 @@ $container = $app->getContainer();
 
 // register session service
 $session = new SessionService();
-
+$session->start();
 $container->set('session', function () use ($session) {
     return $session;
 });
 
+// register view service
 $loader = new \Twig\Loader\FilesystemLoader(__DIR__ . '/../app');
 $twig = new \Twig\Environment($loader, [
     'cache' => $_ENV['APP_MODE'] === 'development'

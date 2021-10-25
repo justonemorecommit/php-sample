@@ -5,16 +5,13 @@ namespace App\Auth\Controllers;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
+use App\Common\Controllers\AppController;
 
-class LoginController
+class LoginController extends AppController
 {
-    private $container;
-    private $view;
-
     public function __construct(ContainerInterface $container)
     {
-        $this->container = $container;
-        $this->view = $this->container->get('view');
+        parent::__construct($container);
     }
 
     public function index(Request $request, Response $response)

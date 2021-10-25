@@ -4,9 +4,26 @@ namespace App\Common\Services;
 
 class SessionService
 {
+    private $flushSession;
+
     public function start()
     {
         session_start();
+
+        if (!isset($_SESSION['flush'])) {
+            $_SESSION['flush'] = [];
+        } else {
+            $this->flushSession = $_SESSION['flush'];
+
+            $_SESSION['flush'] = [];
+        }
+    }
+
+    public function setFlush(string $key, $value)
+    {
+        $_SESSION['flush'][$key] = $value;
+
+        return $value;
     }
 
     public function set(string $key, $value)
@@ -18,6 +35,10 @@ class SessionService
 
     public function get(string $key, $defaultValue = null)
     {
+        if (isset($this->flushSession[$key])) {
+            return $this->flushSession[$key];
+        }
+
         return $_SESSION['app_' . $key] ?? $defaultValue;
     }
 
@@ -33,7 +54,7 @@ class SessionService
 
     public function setStatus(array $options)
     {
-        $this->set(
+        $this->setFlush(
             'status',
             [
                 'type' => isset($options['status'])
