@@ -2,7 +2,7 @@
 
 ## Requirements
 
-- PHP >= 8.0
+- PHP >= 7.3
 - Composer >= 2.1.8
 
 ## Tech Stack
