@@ -13,3 +13,4 @@
 - _ORM_ **Doctrine**
 - _Template_ **Twig**
 - _CSS_ **Bootstrap 5**
+- _Validation_ **Validator**

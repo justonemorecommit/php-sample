@@ -16,6 +16,7 @@
         "laminas/laminas-diactoros": "^2.8",
         "twig/twig": "^2.0",
         "php-di/php-di": "^6.3",
-        "vlucas/phpdotenv": "^5.3"
+        "vlucas/phpdotenv": "^5.3",
+        "rakit/validation": "^1.4"
     }
 }
