@@ -9,3 +9,7 @@ $app->group('/auth', function (RouteCollectorProxy $group) {
 $app->group('/', function ($group) {
     $this->get('homeApp')->registerRoutes($group);
 });
+
+$app->group('/expenses', function ($group) {
+    $this->get('expenseApp')->registerRoutes($group);
+});

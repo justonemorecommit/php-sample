@@ -3,6 +3,7 @@
 use App\Common\CommonApp;
 use App\Home\HomeApp;
 use App\Auth\AuthApp;
+use App\Expense\ExpenseApp;
 
 // bootstrap apps
 
@@ -29,4 +30,13 @@ $homeApp->bootstrap($app);
 
 $container->set('homeApp', function () use ($homeApp) {
   return $homeApp;
+});
+
+
+// bootstrap expense app
+$expenseApp = new ExpenseApp();
+$expenseApp->bootstrap($app);
+
+$container->set('expenseApp', function () use ($expenseApp) {
+  return $expenseApp;
 });

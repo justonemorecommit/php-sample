@@ -15,8 +15,6 @@ AppFactory::setContainer($container);
 
 $app = AppFactory::create();
 
-require __DIR__ . '/../main/services.php';
-require __DIR__ . '/../main/apps.php';
-require __DIR__ . '/../main/routes.php';
+require __DIR__ . '/../main/bootstrap.php';
 
 $app->run();
