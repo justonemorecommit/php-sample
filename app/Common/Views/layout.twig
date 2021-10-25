@@ -20,7 +20,7 @@
     {% endblock %}
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
       <div class="container">
         <a class="navbar-brand" href="#">Issio</a>
         <button class="navbar-toggler"
@@ -83,21 +83,14 @@
     <script src="/js/toastr.min.js"></script>
 
     <script>
-      var statusData = JSON.parse(
-        "{{session.getStatus()|json_encode|escape('js')}}"
-      );
+      var statusData = JSON.parse( "{{
+        session.getStatus()|json_encode|escape('js')
+      }}" );
     </script>
     <script type="text/javascript">
-      if (statusData) {
-        switch (statusData.type) {
-          case 'success':
-            toastr.success(statusData.message);
-            break;
-          case 'error':
-            toastr.error(statusData.message);
-            break;
-        }
-      }
+      if (statusData) { switch (statusData.type) { case 'success':
+      toastr.success(statusData.message); break; case 'error':
+      toastr.error(statusData.message); break; } }
     </script>
   </body>
 </html>

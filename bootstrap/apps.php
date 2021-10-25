@@ -17,7 +17,7 @@ $container->set('commonApp', function () use ($commonApp) {
 
 
 // bootstrap auth app
-$authApp = new AuthApp();
+$authApp = new AuthApp($app->getContainer());
 $authApp->bootstrap($app);
 
 $container->set('authApp', function () use ($authApp) {
@@ -33,7 +33,7 @@ $container->set('homeApp', function () use ($homeApp) {
 });
 
 // bootstrap expense app
-$expenseApp = new ExpenseApp();
+$expenseApp = new ExpenseApp($app->getContainer());
 $expenseApp->bootstrap($app);
 
 $container->set('expenseApp', function () use ($expenseApp) {
