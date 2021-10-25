@@ -27,6 +27,11 @@ class AuthService
         return $this->session->get('auth_user', null);
     }
 
+    public function user()
+    {
+        return $this->getUser();
+    }
+
     public function authenticated()
     {
         return boolval($this->getUser());

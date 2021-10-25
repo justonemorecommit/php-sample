@@ -22,7 +22,10 @@ class ExpenseApp
         $group->group('', function (RouteCollectorProxy $group) {
             $group->get('', [ExpenseController::class, 'index']);
             $group->get('/new', [ExpenseController::class, 'create']);
-            $group->get('/:id/edit', [ExpenseController::class, 'edit']);
+            $group->post('/new', [ExpenseController::class, 'store']);
+            $group->get('/{id}', [ExpenseController::class, 'edit']);
+            $group->post('/{id}', [ExpenseController::class, 'update']);
+            $group->post('/{id}/destroy', [ExpenseController::class, 'destroy']);
         })->add(new AuthMiddleware($this->container));
     }
 

@@ -1,0 +1,81 @@
+{% extends '@common/layout.twig' %}
+
+{% block content %}
+  <div class="container">
+    <div class="d-flex mb-3 mt-3">
+      <a class="btn btn-primary" href="/expenses/new">Create</a>
+    </div>
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>
+              #
+            </th>
+            <th>
+              Category
+            </th>
+            <th>
+              Amount
+            </th>
+            <th>
+              Date
+            </th>
+            <th>
+              Description
+            </th>
+            <th>
+              Actions
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for expense in expenses %}
+            <tr>
+              <td>
+                {{ expense.id }}
+              </td>
+              <td>
+                {{ expense.category }}
+              </td>
+              <td>
+                {{ expense.amount }}
+              </td>
+              <td>
+                {{ expense.date|date('Y/m/d') }}
+              </td>
+              <td>
+                {{ expense.description }}
+              </td>
+              <td>
+                <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle"
+                    type="button"
+                    data-bs-toggle="dropdown">
+                    Actions
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a class="dropdown-item"
+                        href="/expenses/{{ expense.id }}">
+                        Edit
+                      </a>
+                    </li>
+                    <li>
+                      <form method="POST" action="/expenses/{{ expense.id }}">
+                        <input type="hidden" name="METHOD" value="DELETE" />
+                        <button type="submit" class="dropdown-item" href="#">
+                          Delete
+                        </button>
+                      </form>
+                    </li>
+                  </ul>
+                </div>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+{% endblock %}

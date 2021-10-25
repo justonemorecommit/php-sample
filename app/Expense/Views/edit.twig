@@ -1,0 +1,65 @@
+{% extends '@common/layout.twig' %}
+
+{% block content %}
+  <div class="container">
+    <div class="row mt-5">
+      <div class="col-lg-6 col-md-8">
+        <div class="card">
+          <div class="card-header">
+            {{ expense ? 'Edit expense' : 'New expense' }}
+          </div>
+          <div class="card-body">
+            <form action="" method="POST">
+              <input type="hidden"
+                name="_METHOD"
+                value="{{ expense ? 'PUT' : 'POST' }}" />
+              <div class="mb-3">
+                <label>Category</label>
+                <input type="text"
+                  name="category"
+                  class="form-control {{
+                  errors['category']
+                    ? 'is-invalid'
+                    : ''
+                  }}"
+                  value="{{ fields['category'] ?? expense.category }}" />
+              </div>
+              <div class="mb-3">
+                <label>Amount</label>
+                <input type="number"
+                  name="amount"
+                  class="form-control {{
+                  errors['amount']
+                    ? 'is-invalid'
+                    : ''
+                  }}"
+                  value="{{ fields['amount'] ?? expense.amount }}" />
+              </div>
+              <div class="mb-3">
+                <label>Date</label>
+                <input type="date"
+                  name="date"
+                  class="form-control {{ errors['date'] ? 'is-invalid' : '' }}"
+                  value="{{
+                  fields['date']
+                    ?? (expense.date|date('Y-m-d'))
+                  }}" />
+              </div>
+              <div class="mb-3">
+                <label>Description</label>
+                <textarea name="description"
+                  rows="5"
+                  class="form-control {{
+                  errors['description']
+                    ? 'is-invalid'
+                    : ''
+                  }}">{{ fields['description'] ?? expense.description }}</textarea>
+              </div>
+              <button class="btn btn-primary">Save</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

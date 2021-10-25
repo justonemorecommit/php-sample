@@ -40,11 +40,7 @@ class User extends AppModel
 
     public function __construct(array $attributes = [])
     {
-        parent::__construct();
-
-        foreach ($attributes as $key => $value) {
-            $this->{$key} = $value;
-        }
+        parent::__construct($attributes);
 
         if (isset($attributes['password']))
             $this->setPassword($attributes['password']);
@@ -71,7 +67,7 @@ class User extends AppModel
     public static function getSingleByEmail(
         EntityManager $em,
         string $email
-    ): User {
+    ): ?User {
         $qb = $em->createQueryBuilder();
         $qb->select('u')
             ->from(self::class, 'u')

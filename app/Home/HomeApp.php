@@ -10,7 +10,7 @@ class HomeApp
 {
     public function registerRoutes(RouteCollectorProxy $group)
     {
-        $group->get('/', [HomeController::class, 'index']);
+        $group->get('', [HomeController::class, 'index']);
     }
 
     public function bootstrap(App $app)
