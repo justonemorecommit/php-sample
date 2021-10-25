@@ -15,6 +15,6 @@ AppFactory::setContainer($container);
 
 $app = AppFactory::create();
 
-require __DIR__ . '/../main/bootstrap.php';
+require __DIR__ . '/../bootstrap/bootstrap.php';
 
 $app->run();

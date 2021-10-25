@@ -20,7 +20,7 @@
                   class="form-control {{
                   errors['first_name']
                     ? 'is-invalid'
-                    : 'is-valid'
+                    : ''
                   }}"
                   id="firstnameInput"
                   name="first_name"
@@ -36,7 +36,7 @@
                   class="form-control {{
                   errors['last_name']
                     ? 'is-invalid'
-                    : 'is-valid'
+                    : ''
                   }}"
                   id="lastnameInput"
                   name="last_name"
@@ -49,11 +49,7 @@
               <div class="mb-3">
                 <label for="emailInput" class="form-label">Email address</label>
                 <input type="email"
-                  class="form-control {{
-                  errors['email']
-                    ? 'is-invalid'
-                    : 'is-valid'
-                  }}"
+                  class="form-control {{ errors['email'] ? 'is-invalid' : '' }}"
                   id="emailInput"
                   name="email"
                   placeholder="name@example.com"
@@ -68,7 +64,7 @@
                   class="form-control {{
                   errors['password']
                     ? 'is-invalid'
-                    : 'is-valid'
+                    : ''
                   }}"
                   name="password"
                   id="passwordInput"

@@ -3,21 +3,16 @@
 namespace App\Auth\Controllers;
 
 use Psr\Container\ContainerInterface;
-use Psr\Http\Message\ResponseInterface as Response;
-use Psr\Http\Message\ServerRequestInterface as Request;
-use Rakit\Validation\Validator;
+use Slim\Psr7\Request;
+use Slim\Psr7\Response;
+use App\Auth\Models\User;
+use App\Common\Controllers\AppController;
 
-class RegisterController
+class RegisterController extends AppController
 {
-    private $container;
-    private $view;
-    private $validator;
-
     public function __construct(ContainerInterface $container)
     {
-        $this->container = $container;
-        $this->view = $this->container->get('view');
-        $this->validator = new Validator();
+        parent::__construct($container);
     }
 
     public function index(Request $request, Response $response)
@@ -38,13 +33,39 @@ class RegisterController
         $validation->validate();
 
         if ($validation->fails()) {
-            var_dump($request->getParsedBody());
             echo $this->view->render('@auth/register.twig', [
                 'errors' => $validation->errors()->firstOfAll(),
                 'fields' => $request->getParsedBody()
             ]);
         }
 
-        return $response;
+        // check duplicated emails
+        if (User::checkEmailDuplication(
+            $this->em,
+            $request->getParsedBody()['email']
+        )) {
+            echo $this->view->render('@auth/register.twig', [
+                'errors' => [
+                    'email' => 'The Email already exists',
+                ],
+                'fields' => $request->getParsedBody()
+            ]);
+
+            return $response;
+        }
+
+        $user = new User($request->getParsedBody());
+
+        $this->em->persist($user);
+        $this->em->flush();
+
+        $this->session->setStatus([
+            'type' => 'success',
+            'message' => 'You are successfully registered!'
+        ]);
+
+        return $response
+            ->withStatus(302)
+            ->withHeader('Location', '/auth/login');
     }
 }

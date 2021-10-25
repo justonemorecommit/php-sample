@@ -16,7 +16,7 @@ class SessionService
         return $value;
     }
 
-    public function get(string $key, $defaultValue)
+    public function get(string $key, $defaultValue = null)
     {
         return $_SESSION['app_' . $key] ?? $defaultValue;
     }
@@ -34,17 +34,23 @@ class SessionService
     public function setStatus(array $options)
     {
         $this->set(
-            'status_type',
-            isset($options['status'])
-                ? $options['status']
-                : 'success'
+            'status',
+            [
+                'type' => isset($options['status'])
+                    ? $options['status']
+                    : 'success',
+                'message' =>  isset($options['message'])
+                    ? $options['message']
+                    : 'Successfully done!'
+            ]
         );
+    }
 
-        $this->set(
-            'status_message',
-            isset($options['message'])
-                ? $options['message']
-                : 'Successfully done!'
-        );
+    public function getStatus()
+    {
+        return $this->get('status', [
+            'type' => null,
+            'message' => null
+        ]);
     }
 }

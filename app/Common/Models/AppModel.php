@@ -8,12 +8,12 @@ use DateTime;
 class AppModel
 {
     /**
-     * @Column(type="date", options={"default" : "now()"})
+     * @Column(type="datetime", options={"default" : "now()"})
      */
     public $created_at;
 
     /**
-     * @Column(type="date", options={"default" : "now()"})
+     * @Column(type="datetime", options={"default" : "now()"})
      */
     public $updated_at;
 

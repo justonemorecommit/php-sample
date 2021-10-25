@@ -12,6 +12,7 @@
       </title>
 
       <link rel="stylesheet" href="/css/bootstrap.min.css" />
+      <link rel="stylesheet" href="/css/toastr.min.css" />
 
       {% block extra_css %}
 
@@ -76,7 +77,27 @@
 
     {% endblock %}
 
+    <script src="/js/jquery.min.js"></script>
     <script src="/js/popper.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/toastr.min.js"></script>
+
+    <script>
+      var statusData = JSON.parse(
+        "{{session.getStatus()|json_encode|escape('js')}}"
+      );
+    </script>
+    <script type="text/javascript">
+      if (statusData) {
+        switch (statusData.type) {
+          case 'success':
+            toastr.success(statusData.message);
+            break;
+          case 'error':
+            toastr.error(statusData.message);
+            break;
+        }
+      }
+    </script>
   </body>
 </html>

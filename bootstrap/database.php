@@ -12,8 +12,6 @@ $config = Setup::createAnnotationMetadataConfiguration(
     $isDevMode,
 );
 
-var_dump($paths);
-
 // database configuration parameters
 $conn = array(
     "driver" => "pdo_mysql",
