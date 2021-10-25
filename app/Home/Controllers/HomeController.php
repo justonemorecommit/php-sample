@@ -9,19 +9,19 @@ use Twig\Environment as Twig;
 
 class HomeController
 {
-  private $container;
-  private $view;
+    private $container;
+    private $view;
 
-  public function __construct(ContainerInterface $container)
-  {
-    $this->container = $container;
-    $this->view = $this->container->get('view');
-  }
+    public function __construct(ContainerInterface $container)
+    {
+        $this->container = $container;
+        $this->view = $this->container->get('view');
+    }
 
-  public function index(Request $request, Response $response)
-  {
-    echo $this->view->render('Home/Views/home.twig');
+    public function index(Request $request, Response $response)
+    {
+        echo $this->view->render('@home/home.twig');
 
-    return $response;
-  }
+        return $response;
+    }
 }
