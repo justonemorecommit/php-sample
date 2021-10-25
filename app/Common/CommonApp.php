@@ -13,9 +13,12 @@ class CommonApp
 
     public function bootstrap(App $app)
     {
-        $app->getContainer()
-            ->get('view')
-            ->getLoader()
+        $view = $app->getContainer()
+            ->get('view');
+
+        $view->getLoader()
             ->addPath(__DIR__ . '/Views', 'common');
+
+        $view->addGlobal('authenticated', false);
     }
 }
