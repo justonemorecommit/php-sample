@@ -7,7 +7,8 @@
 
 ## Tech Stack
 
+- _Dependency Manager_ **Composer**
 - _Routing_ **Slim**
 - _ORM_ **Doctrine**
 - _Template_ **Twig**
-- _CSS_ **Bootstrap**
+- _CSS_ **Bootstrap 5**

@@ -1,0 +1,14 @@
+{
+    "name": "isso/jackson-sample",
+    "description": "A sample project created by Jackson",
+    "type": "project",
+    "require": {
+        "doctrine/orm": "*",
+        "robmorgan/phinx": "^0.12.9",
+        "slim/slim": "4.*",
+        "slim/psr7": "^1.5",
+        "guzzlehttp/psr7": "^2",
+        "laminas/laminas-diactoros": "^2.8",
+        "twig/twig": "^2.0"
+    }
+}
