@@ -14,12 +14,12 @@ $config = Setup::createAnnotationMetadataConfiguration(
 
 // database configuration parameters
 $conn = array(
-    "driver" => "pdo_mysql",
-    "host" => "localhost",
-    "port" => "3306",
-    "user" => "root",
-    "password" => "",
-    "dbname" => "jack_dev_db"
+    "driver" => $_ENV['DB_DRIVER'] ?? "pdo_mysql",
+    "host" => $_ENV['DB_HOST'] ?? "localhost",
+    "port" => $_ENV['DB_PORT'] ?? "3306",
+    "user" => $_ENV['DB_USER'] ?? "root",
+    "password" => $_ENV['DB_PASSWORD'] ?? "",
+    "dbname" => $_ENV['DB_NAME'] ?? "jack_dev_db"
 );
 
 // obtaining the entity manager

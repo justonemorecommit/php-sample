@@ -20,6 +20,7 @@
         "rakit/validation": "^1.4",
         "doctrine/cache": "2.1.1",
         "symfony/cache": "^5.3",
-        "doctrine/annotations": "^1.13"
+        "doctrine/annotations": "^1.13",
+        "twig/markdown-extra": "^3.3"
     }
 }
