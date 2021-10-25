@@ -5,6 +5,7 @@ namespace App\Common\Controllers;
 use Psr\Container\ContainerInterface;
 use Rakit\Validation\Validator;
 use App\Common\Services\SessionService;
+use App\Auth\Services\AuthService;
 use Doctrine\ORM\EntityManager;
 use Twig\Environment as TwigEnvironment;
 
@@ -34,6 +35,11 @@ class AppController
      * @var SessionService
      */
     protected $session;
+
+    /**
+     * @var AuthService
+     */
+    protected $auth;
 
     public function __construct(ContainerInterface $container)
     {

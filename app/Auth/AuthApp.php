@@ -12,6 +12,7 @@ class AuthApp
     public function registerRoutes(RouteCollectorProxy $group)
     {
         $group->get('/login', [LoginController::class, 'index']);
+        $group->post('/login', [LoginController::class, 'login']);
         $group->get('/register', [RegisterController::class, 'index']);
         $group->post('/register', [RegisterController::class, 'register']);
     }

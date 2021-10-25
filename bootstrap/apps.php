@@ -32,7 +32,6 @@ $container->set('homeApp', function () use ($homeApp) {
   return $homeApp;
 });
 
-
 // bootstrap expense app
 $expenseApp = new ExpenseApp();
 $expenseApp->bootstrap($app);

@@ -8,9 +8,10 @@
 ## Tech Stack
 
 - _PHP Dependency Manager_ **Composer**
-- _PHP Dependency Injection__ **PHP-DI**
+- _PHP Dependency Injection_ **PHP-DI**
 - _Routing_ **Slim**
 - _ORM_ **Doctrine**
+- _Migration__ **Phinx**
 - _Template_ **Twig**
 - _CSS_ **Bootstrap 5**
 - _Validation_ **Validator**

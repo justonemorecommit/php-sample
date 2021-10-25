@@ -68,10 +68,10 @@ class User extends AppModel
         return password_verify($password_plain, $this->password);
     }
 
-    public static function checkEmailDuplication(
+    public static function getSingleByEmail(
         EntityManager $em,
         string $email
-    ) {
+    ): User {
         $qb = $em->createQueryBuilder();
         $qb->select('u')
             ->from(self::class, 'u')
@@ -80,6 +80,26 @@ class User extends AppModel
             ->setParameter('email', $email);
         $results = $qb->getQuery()->getResult();
 
-        return count($results) > 0;
+        return count($results) > 0 ? $results[0] : null;
+    }
+
+    public static function checkEmailDuplication(
+        EntityManager $em,
+        string $email
+    ) {
+        return boolval(self::getSingleByEmail($em, $email));
+    }
+
+    public static function checkEmailAndPassword(
+        EntityManager $em,
+        string $email,
+        string $password
+    ) {
+        $user = self::getSingleByEmail($em, $email);
+
+        if (!$user) return false;
+        if ($user->verifyPassword($password)) return $user;
+
+        return null;
     }
 }
