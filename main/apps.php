@@ -2,6 +2,12 @@
 
 use App\Home\HomeApp;
 
-$container->set('homeApp', function() {
-  return new HomeApp();
+
+// bootstrap common app
+$commonApp = new CommonApp();
+$commonApp->bootstrap($app);
+
+$container->set('commonApp', function () use ($commonApp) {
+  return $commonApp;
+});
 });
