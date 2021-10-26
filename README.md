@@ -13,7 +13,7 @@ Jackson's 12 hour sample project using PHP
 - _PHP Dependency Injection_ **PHP-DI**
 - _Routing_ **Slim**
 - _ORM_ **Doctrine**
-- _Migration__ **Phinx**
+- _Migration_ **Phinx**
 - _Template_ **Twig**
 - _CSS_ **Bootstrap 5**
 - _Validation_ **Validator**
